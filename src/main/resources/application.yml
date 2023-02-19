@@ -15,7 +15,37 @@ spring:
           password: 123456
           type: com.alibaba.druid.pool.DruidDataSource
 
-
+  redis:
+    # 多数据源配置
+    source:
+      # redis1将作为 StringRedisTemplate、RedisCacheUtils和RedisBaseService的名称前缀
+      redis2:
+        port: 6379
+        host: 127.0.0.1
+        database: 2
+        timeout: 20000ms
+        lettuce:
+          pool:
+            # 最大活跃链接数 默认8
+            max-active: 3
+            # 最大空闲连接数 默认8
+            max-idle: 3
+            # 最小空闲连接数 默认0
+            min-idle: 0
+      # redis2将作为 StringRedisTemplate、RedisCacheUtils和RedisBaseService的名称前缀
+      redis3:
+        port: 6379
+        host: 127.0.0.1
+        database: 3
+        timeout: 20000ms
+        lettuce:
+          pool:
+            # 最大活跃链接数 默认8
+            max-active: 3
+            # 最大空闲连接数 默认8
+            max-idle: 3
+            # 最小空闲连接数 默认0
+            min-idle: 0
 mybatis:
 
   #  config-location: classpath:mybatis/mybatis-config.xml
@@ -24,3 +54,5 @@ mybatis:
   # Sql语句正茬查不出数据，显示数据结构和接口返回数据不匹配，使用这个配置将下划线的字段改为驼峰命名
   configuration:
     mapUnderscoreToCamelCase: true
+
+
